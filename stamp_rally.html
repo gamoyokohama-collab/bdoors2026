@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>B.DOORS KANAGAWA 2026 スタンプラリー</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.min.js"></script>
 <style>
 :root {
   --col-bg: #0a0a14;
@@ -19,7 +18,9 @@
   --col-gold: #fbbf24;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: var(--col-bg); color: var(--col-text); font-family: 'Noto Sans JP', sans-serif; min-height: 100vh; padding-bottom: 100px; }
+body { background: var(--col-bg); color: var(--col-text); font-family: 'Noto Sans JP', sans-serif; min-height: 100vh; padding-bottom: 40px; }
+
+/* 入力画面 */
 .input-screen { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px 24px; background: linear-gradient(160deg, #0d1b3e 0%, #1a0a2e 50%, #0d2211 100%); }
 .input-logo { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 4px; color: #fff; text-align: center; margin-bottom: 4px; }
 .input-sub { font-size: 11px; letter-spacing: 3px; color: var(--col-accent); text-align: center; margin-bottom: 40px; }
@@ -31,6 +32,8 @@ body { background: var(--col-bg); color: var(--col-text); font-family: 'Noto San
 .input-select option { background: #1a1a2e; color: var(--col-text); }
 .start-btn { width: 100%; padding: 16px; border-radius: 12px; border: none; background: linear-gradient(135deg, var(--col-accent), var(--col-accent2)); color: #fff; font-family: 'Noto Sans JP', sans-serif; font-size: 16px; font-weight: 700; cursor: pointer; opacity: 0.4; transition: opacity 0.2s; }
 .start-btn.ready { opacity: 1; }
+
+/* スタンプカード画面 */
 .stamp-screen { display: none; }
 .stamp-screen.active { display: block; }
 .header { background: linear-gradient(135deg, #0d1b3e 0%, #1a0a2e 50%, #0d2211 100%); padding: 20px 20px 16px; text-align: center; position: relative; overflow: hidden; border-bottom: 1px solid var(--col-border); }
@@ -40,41 +43,122 @@ body { background: var(--col-bg); color: var(--col-text); font-family: 'Noto San
 .badge { border-radius: 20px; padding: 4px 14px; font-size: 12px; font-weight: 700; }
 .badge.school { color: var(--col-accent); border: 1px solid var(--col-accent)44; background: var(--col-accent)11; }
 .badge.grade  { color: var(--col-accent2); border: 1px solid var(--col-accent2)44; background: var(--col-accent2)11; }
+
 .progress-section { padding: 16px 20px 14px; background: var(--col-card); border-bottom: 1px solid var(--col-border); }
 .progress-row { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 8px; }
 .progress-count { font-family: 'Bebas Neue', sans-serif; font-size: 38px; line-height: 1; color: var(--col-accent); }
 .progress-count span { font-size: 18px; color: var(--col-muted); font-family: 'Noto Sans JP', sans-serif; font-weight: 400; }
-.progress-label { font-size: 11px; color: var(--col-muted); text-align: right; line-height: 1.5; }
+.progress-label { font-size: 11px; color: var(--col-muted); text-align: right; line-height: 1.6; }
 .progress-bar-wrap { background: #ffffff10; border-radius: 4px; height: 6px; overflow: hidden; }
 .progress-bar { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--col-accent), var(--col-accent2)); transition: width 0.6s cubic-bezier(.4,0,.2,1); }
+
 .mission-banner { margin: 12px 16px 0; border-radius: 10px; padding: 10px 14px; display: none; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; }
 .mission-banner.show { display: flex; }
 .mission-banner.step1 { background: linear-gradient(135deg, #fbbf2420, #f59e0b10); border: 1px solid var(--col-gold)44; color: var(--col-gold); }
 .mission-icon { width: 28px; height: 28px; border-radius: 50%; background: var(--col-gold)22; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
-.scan-footer { position: fixed; bottom: 0; left: 0; right: 0; padding: 16px 20px 36px; background: linear-gradient(transparent, var(--col-bg) 40%); display: none; z-index: 50; }
-.scan-footer.active { display: block; }
-.scan-btn { width: 100%; padding: 18px; border-radius: 16px; border: none; background: linear-gradient(135deg, var(--col-accent), var(--col-accent2)); color: #fff; font-family: 'Noto Sans JP', sans-serif; font-size: 17px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 4px 24px var(--col-accent)44; }
+
+.howto {
+  margin: 12px 16px 0;
+  background: #ffffff08;
+  border: 1px solid var(--col-border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 11px;
+  color: var(--col-muted);
+  line-height: 1.7;
+}
+.howto strong { color: var(--col-accent); }
+
 .section-title { padding: 16px 16px 8px; font-size: 11px; letter-spacing: 2px; color: var(--col-muted); }
-.booth-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; padding: 0 12px; }
-@media (min-width: 480px) { .booth-grid { grid-template-columns: repeat(5, 1fr); } }
-.booth-card { aspect-ratio: 1; border-radius: 8px; border: 1px solid var(--col-border); background: var(--col-card); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; position: relative; overflow: hidden; }
-.booth-card.stamped { border-color: var(--col-stamped)66; background: linear-gradient(135deg, #052210, #0a1a0a); }
-.booth-card.stamped::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at center, var(--col-stamped)18 0%, transparent 70%); }
-.booth-number { font-family: 'Bebas Neue', sans-serif; font-size: 20px; line-height: 1; color: var(--col-muted); transition: opacity 0.2s; }
-.booth-card.stamped .booth-number { opacity: 0; }
-.stamp-mark { font-size: 20px; opacity: 0; transform: scale(0); transition: all 0.3s cubic-bezier(.34,1.56,.64,1); position: absolute; }
-.booth-card.stamped .stamp-mark { opacity: 1; transform: scale(1); }
-.booth-name { font-size: 8px; color: var(--col-muted); text-align: center; line-height: 1.2; padding: 0 3px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; transition: color 0.2s; }
-.booth-card.stamped .booth-name { color: var(--col-stamped)bb; }
-.visit-time { font-size: 7px; color: var(--col-stamped)88; position: absolute; bottom: 3px; right: 4px; }
-.loading-overlay { display: none; position: fixed; inset: 0; background: #000000cc; z-index: 150; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }
-.loading-overlay.active { display: flex; }
-.loading-spinner { width: 48px; height: 48px; border: 3px solid #ffffff22; border-top-color: var(--col-accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
-.loading-text { font-size: 14px; color: #ffffffaa; }
+
+/* ブースリスト（タップ式） */
+.booth-list { padding: 0 12px; display: flex; flex-direction: column; gap: 6px; }
+
+.booth-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--col-card);
+  border: 1px solid var(--col-border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: transform 0.1s, border-color 0.2s, background 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+.booth-item:active { transform: scale(0.98); }
+.booth-item.stamped {
+  border-color: var(--col-stamped)55;
+  background: linear-gradient(135deg, #052210, #0a1a0a);
+  cursor: default;
+}
+
+.booth-check {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--col-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(.34,1.56,.64,1);
+  font-size: 14px;
+}
+.booth-item.stamped .booth-check {
+  background: var(--col-stamped);
+  border-color: var(--col-stamped);
+  color: #fff;
+}
+
+.booth-info { flex: 1; min-width: 0; }
+.booth-item-num { font-size: 10px; color: var(--col-muted); margin-bottom: 2px; }
+.booth-item-name { font-size: 14px; font-weight: 700; color: var(--col-text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; transition: color 0.2s; }
+.booth-item.stamped .booth-item-name { color: var(--col-stamped); }
+
+.booth-time { font-size: 10px; color: var(--col-stamped)99; flex-shrink: 0; }
+
+/* 確認モーダル */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #000000bb;
+  z-index: 100;
+  align-items: flex-end;
+  justify-content: center;
+}
+.modal-overlay.active { display: flex; }
+.modal-sheet {
+  background: #1a1a2e;
+  border-radius: 20px 20px 0 0;
+  width: 100%;
+  max-width: 480px;
+  padding: 28px 24px 48px;
+  border-top: 1px solid var(--col-border);
+  animation: slideUp 0.25s cubic-bezier(.4,0,.2,1);
+}
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.modal-booth-name { font-size: 20px; font-weight: 900; margin-bottom: 8px; line-height: 1.3; }
+.modal-desc { font-size: 13px; color: var(--col-muted); margin-bottom: 24px; line-height: 1.7; }
+.modal-btn-yes {
+  width: 100%; padding: 16px; border-radius: 12px; border: none;
+  background: linear-gradient(135deg, var(--col-stamped), #16a34a);
+  color: #fff; font-family: 'Noto Sans JP', sans-serif; font-size: 16px; font-weight: 700;
+  cursor: pointer; margin-bottom: 10px;
+}
+.modal-btn-no {
+  width: 100%; padding: 14px; border-radius: 12px; border: none;
+  background: #ffffff10; color: var(--col-muted);
+  font-family: 'Noto Sans JP', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer;
+}
+
+/* トースト */
 .toast { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8); background: var(--col-stamped); color: #fff; padding: 20px 32px; border-radius: 16px; font-size: 16px; font-weight: 700; text-align: center; opacity: 0; transition: all 0.3s cubic-bezier(.34,1.56,.64,1); z-index: 300; pointer-events: none; min-width: 200px; white-space: pre-line; line-height: 1.6; }
 .toast.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-.toast.error { background: #ef4444; }
+
+/* 完了画面 */
 .complete-screen { display: none; position: fixed; inset: 0; background: #0a0a14; z-index: 200; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px; }
 .complete-screen.active { display: flex; }
 .complete-emoji { font-size: 64px; margin-bottom: 20px; }
@@ -85,6 +169,7 @@ body { background: var(--col-bg); color: var(--col-text); font-family: 'Noto San
 </head>
 <body>
 
+<!-- 入力画面 -->
 <div class="input-screen" id="input-screen">
   <div class="input-logo">B.DOORS KANAGAWA 2026</div>
   <div class="input-sub">Stamp Rally</div>
@@ -115,6 +200,7 @@ body { background: var(--col-bg); color: var(--col-text); font-family: 'Noto San
   </div>
 </div>
 
+<!-- スタンプカード画面 -->
 <div class="stamp-screen" id="stamp-screen">
   <div class="header">
     <div class="header-logo">B.DOORS KANAGAWA 2026</div>
@@ -136,30 +222,27 @@ body { background: var(--col-bg); color: var(--col-text); font-family: 'Noto San
     <div class="mission-icon">🎉</div>
     <div>5件達成！抽選会場へ行けるようになりました</div>
   </div>
+  <div class="howto">
+    <strong>使い方：</strong>訪問したブース名をタップ → スタッフに画面を見せる → チェックが入ります
+  </div>
   <div class="section-title">BOOTH LIST</div>
-  <div class="booth-grid" id="booth-grid"></div>
+  <div class="booth-list" id="booth-list"></div>
 </div>
 
-<div class="scan-footer" id="scan-footer">
-  <button class="scan-btn" onclick="document.getElementById('qr-input').click()">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="23 7 23 1 17 1"/><line x1="16" y1="8" x2="23" y2="1"/>
-      <polyline points="1 17 1 23 7 23"/><line x1="8" y1="16" x2="1" y2="23"/>
-      <rect x="5" y="5" width="14" height="14" rx="2"/>
-    </svg>
-    ブースのQRコードを読む
-  </button>
-  <input type="file" id="qr-input" accept="image/*" capture="environment"
-    style="display:none;" onchange="handleQRPhoto(this)">
+<!-- 確認モーダル -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal-sheet">
+    <div class="modal-booth-name" id="modal-booth-name"></div>
+    <div class="modal-desc">このブースを訪問しましたか？<br>タップすると取り消しができません。</div>
+    <button class="modal-btn-yes" onclick="confirmStamp()">✓ 訪問しました</button>
+    <button class="modal-btn-no" onclick="closeModal()">キャンセル</button>
+  </div>
 </div>
 
-<div class="loading-overlay" id="loading-overlay">
-  <div class="loading-spinner"></div>
-  <div class="loading-text">QRコードを読み取り中...</div>
-</div>
-
+<!-- トースト -->
 <div class="toast" id="toast"></div>
 
+<!-- 完了画面 -->
 <div class="complete-screen" id="complete-screen">
   <div class="complete-emoji">🏆</div>
   <div class="complete-title">全ブース制覇！</div>
@@ -184,10 +267,12 @@ const BOOTHS = [
   "株式会社TRIPLE-ef","lulu.表参道"
 ];
 
-const TOTAL    = 62;
-const GAS_URL  = "https://script.google.com/macros/s/AKfycbxIwPsNPf86j_K9chptAoLbhxiotsLAOfuCpi75CFT3SVZgOYl3vg8rNIP5iwvowuW7/exec";
+const TOTAL   = 62;
+const GAS_URL = "https://script.google.com/macros/s/AKfycbxIwPsNPf86j_K9chptAoLbhxiotsLAOfuCpi75CFT3SVZgOYl3vg8rNIP5iwvowuW7/exec";
 
 let school = '', grade = '', stamps = {};
+let pendingBooth = null;
+
 const QUEUE_KEY = 'bdoors2026_queue';
 let queue = JSON.parse(localStorage.getItem(QUEUE_KEY) || '[]');
 
@@ -203,30 +288,34 @@ function startStampRally() {
   if (!school || !grade) return;
   document.getElementById('input-screen').style.display = 'none';
   document.getElementById('stamp-screen').classList.add('active');
-  document.getElementById('scan-footer').classList.add('active');
   document.getElementById('badge-school').textContent = school;
   document.getElementById('badge-grade').textContent  = grade;
   stamps = JSON.parse(localStorage.getItem(storageKey()) || '{}');
-  buildGrid();
+  buildList();
   sendQueue();
 }
 
 function storageKey() { return 'bdoors2026_' + school + '_' + grade; }
 
-function buildGrid() {
-  const grid = document.getElementById('booth-grid');
-  grid.innerHTML = '';
+function buildList() {
+  const list = document.getElementById('booth-list');
+  list.innerHTML = '';
   BOOTHS.forEach((name, i) => {
     const num = i + 1;
     const isStamped = !!stamps[num];
-    const card = document.createElement('div');
-    card.className = 'booth-card' + (isStamped ? ' stamped' : '');
-    card.innerHTML =
-      '<div class="booth-number">' + num + '</div>' +
-      '<div class="stamp-mark">✓</div>' +
-      '<div class="booth-name">' + name + '</div>' +
-      (isStamped && stamps[num].time ? '<div class="visit-time">' + stamps[num].time + '</div>' : '');
-    grid.appendChild(card);
+    const item = document.createElement('div');
+    item.className = 'booth-item' + (isStamped ? ' stamped' : '');
+    item.innerHTML =
+      '<div class="booth-check">' + (isStamped ? '✓' : '') + '</div>' +
+      '<div class="booth-info">' +
+        '<div class="booth-item-num">BOOTH ' + num + '</div>' +
+        '<div class="booth-item-name">' + name + '</div>' +
+      '</div>' +
+      (isStamped && stamps[num].time ? '<div class="booth-time">' + stamps[num].time + '</div>' : '');
+    if (!isStamped) {
+      item.onclick = () => openModal(num, name);
+    }
+    list.appendChild(item);
   });
   updateProgress();
 }
@@ -239,95 +328,25 @@ function updateProgress() {
   if (count >= TOTAL) setTimeout(() => document.getElementById('complete-screen').classList.add('active'), 800);
 }
 
-// ★ここが修正のポイント：画像を600pxに縮小してからQR読み取り
-function handleQRPhoto(input) {
-  if (!input.files || !input.files[0]) return;
-  const file = input.files[0];
-  input.value = '';
-  document.getElementById('loading-overlay').classList.add('active');
-
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    const img = new Image();
-    img.onload = function() {
-      // iPhoneの高解像度写真を縮小（最大600px）
-      const MAX = 600;
-      let w = img.width;
-      let h = img.height;
-      if (w > MAX || h > MAX) {
-        if (w > h) { h = Math.round(h * MAX / w); w = MAX; }
-        else        { w = Math.round(w * MAX / h); h = MAX; }
-      }
-      const canvas = document.createElement('canvas');
-      canvas.width  = w;
-      canvas.height = h;
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0, w, h);
-
-      // 縮小画像でQR読み取り
-      const imageData = ctx.getImageData(0, 0, w, h);
-      const code = jsQR(imageData.data, w, h, { inversionAttempts: 'dontInvert' });
-
-      document.getElementById('loading-overlay').classList.remove('active');
-
-      if (!code) {
-        // 縮小でダメなら少し大きいサイズで再試行
-        retryWithLargerSize(img);
-        return;
-      }
-      handleQRResult(code.data);
-    };
-    img.src = e.target.result;
-  };
-  reader.readAsDataURL(file);
+function openModal(num, name) {
+  pendingBooth = { num, name };
+  document.getElementById('modal-booth-name').textContent = name;
+  document.getElementById('modal-overlay').classList.add('active');
 }
 
-// 再試行（1000pxで）
-function retryWithLargerSize(img) {
-  const MAX = 1000;
-  let w = img.width;
-  let h = img.height;
-  if (w > MAX || h > MAX) {
-    if (w > h) { h = Math.round(h * MAX / w); w = MAX; }
-    else        { w = Math.round(w * MAX / h); h = MAX; }
-  }
-  const canvas = document.createElement('canvas');
-  canvas.width  = w;
-  canvas.height = h;
-  const ctx = canvas.getContext('2d');
-  ctx.drawImage(img, 0, 0, w, h);
-  const imageData = ctx.getImageData(0, 0, w, h);
-  const code = jsQR(imageData.data, w, h, { inversionAttempts: 'attemptBoth' });
-  if (!code) {
-    showToast('QRコードを読み取れませんでした\nQRコードに近づいて\nもう一度試してください', true);
-    return;
-  }
-  handleQRResult(code.data);
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('active');
+  pendingBooth = null;
 }
 
-function handleQRResult(url) {
-  if (!url.includes('stamp_rally.html')) {
-    showToast('このQRコードは\n対応していません', true);
-    return;
-  }
-  try {
-    const params = new URL(url).searchParams;
-    const boothNum = parseInt(params.get('booth'));
-    if (!boothNum || boothNum < 1 || boothNum > TOTAL) {
-      showToast('ブース番号が\n見つかりません', true);
-      return;
-    }
-    doStamp(boothNum, BOOTHS[boothNum - 1]);
-  } catch(e) {
-    showToast('QRコードの読み取りに\n失敗しました', true);
-  }
+function confirmStamp() {
+  if (!pendingBooth) return;
+  closeModal();
+  setTimeout(() => doStamp(pendingBooth.num, pendingBooth.name), 200);
 }
 
 function doStamp(boothNum, boothName) {
-  if (stamps[boothNum]) {
-    showToast('このブースは\nすでに訪問済みです', true);
-    return;
-  }
+  if (stamps[boothNum]) return;
   const now = new Date();
   const timeStr = now.getHours() + ':' + String(now.getMinutes()).padStart(2,'0');
   stamps[boothNum] = { time: timeStr, boothName };
@@ -335,14 +354,14 @@ function doStamp(boothNum, boothName) {
   queue.push({ school, grade, boothNum, boothName, timestamp: now.toISOString() });
   localStorage.setItem(QUEUE_KEY, JSON.stringify(queue));
   sendQueue();
-  buildGrid();
-  showToast('✓  ' + boothName + '\nスタンプを押しました！', false);
+  buildList();
+  showToast('✓  ' + boothName + '\nスタンプを押しました！');
 }
 
-function showToast(msg, isError) {
+function showToast(msg) {
   const toast = document.getElementById('toast');
   toast.textContent = msg;
-  toast.className = 'toast' + (isError ? ' error' : '');
+  toast.className = 'toast';
   requestAnimationFrame(() => requestAnimationFrame(() => toast.classList.add('show')));
   setTimeout(() => toast.classList.remove('show'), 2500);
 }
