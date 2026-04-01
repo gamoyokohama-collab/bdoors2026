@@ -90,10 +90,7 @@ body {
   background-repeat: no-repeat;
   background-position: right 16px center;
 }
-.input-select:focus {
-  outline: none;
-  border-color: var(--col-accent);
-}
+.input-select:focus { outline: none; border-color: var(--col-accent); }
 .input-select option { background: #1a1a2e; color: var(--col-text); }
 .start-btn {
   width: 100%;
@@ -263,13 +260,10 @@ body {
   align-items: center;
   justify-content: center;
   gap: 4px;
-  cursor: pointer;
   position: relative;
   overflow: hidden;
   transition: transform 0.15s, border-color 0.2s;
-  -webkit-tap-highlight-color: transparent;
 }
-.booth-card:active { transform: scale(0.94); }
 .booth-card.stamped {
   border-color: var(--col-stamped)66;
   background: linear-gradient(135deg, #052210, #0a1a0a);
@@ -325,7 +319,6 @@ body {
   line-height: 1.8;
 }
 
-/* 完了画面 */
 .complete-screen {
   display: none;
   position: fixed;
@@ -379,7 +372,7 @@ body {
     <label class="input-label">学校名</label>
     <select class="input-select" id="select-school" onchange="checkReady()">
       <option value="">選択してください</option>
-      <!-- ★ここに実際の学校名を追加してください★ -->
+      <!-- ★実際の参加校名に変更してください★ -->
       <option value="A大学">A大学</option>
       <option value="B大学">B大学</option>
       <option value="C大学">C大学</option>
@@ -405,7 +398,6 @@ body {
 
 <!-- ========== スタンプカード画面 ========== -->
 <div class="stamp-screen" id="stamp-screen">
-
   <div class="header">
     <div class="header-logo">B.DOORS KANAGAWA 2026</div>
     <div class="header-sub">Stamp Rally</div>
@@ -417,7 +409,7 @@ body {
 
   <div class="progress-section">
     <div class="progress-row">
-      <div class="progress-count"><span id="stamp-count">0</span><span> / 63</span></div>
+      <div class="progress-count"><span id="stamp-count">0</span><span> / 62</span></div>
       <div class="progress-label">5件達成で<br>抽選に参加できます</div>
     </div>
     <div class="progress-bar-wrap">
@@ -443,7 +435,7 @@ body {
   <div class="complete-emoji">🏆</div>
   <div class="complete-title">全ブース制覇！</div>
   <div class="complete-msg">
-    63ブースすべてを訪問しました。<br>
+    62ブースすべてを訪問しました。<br>
     ありがとうございました！
   </div>
   <button class="complete-btn" onclick="document.getElementById('complete-screen').classList.remove('active')">
@@ -452,89 +444,118 @@ body {
 </div>
 
 <script>
-// ================================================================
-//  設定エリア
-// ================================================================
-
-// ブース名（実際のブース名に差し替えてください）
 const BOOTHS = [
-  "A社","B社","C社","D社","E社","F社","G社",
-  "ブース8","ブース9","ブース10",
-  "ブース11","ブース12","ブース13","ブース14","ブース15",
-  "ブース16","ブース17","ブース18","ブース19","ブース20",
-  "ブース21","ブース22","ブース23","ブース24","ブース25",
-  "ブース26","ブース27","ブース28","ブース29","ブース30",
-  "ブース31","ブース32","ブース33","ブース34","ブース35",
-  "ブース36","ブース37","ブース38","ブース39","ブース40",
-  "ブース41","ブース42","ブース43","ブース44","ブース45",
-  "ブース46","ブース47","ブース48","ブース49","ブース50",
-  "ブース51","ブース52","ブース53","ブース54","ブース55",
-  "ブース56","ブース57","ブース58","ブース59","ブース60",
-  "ブース61","ブース62","ブース63"
+  "NOB hair design",
+  "TORCH hair&headspa",
+  "Produce",
+  "KINGDOM",
+  "ルジャルダングループ",
+  "FORS",
+  "ANHUTTE",
+  "rodina",
+  "有限会社モザミトータルビューティー",
+  "MENIMEN'S SALON",
+  "HEART",
+  "株式会社牛若丸",
+  "IMAGE-A",
+  "bianca / padme",
+  "シエルアヴェダ",
+  "OORDER/LOUIE",
+  "Mahalo",
+  "株式会社ケンジ",
+  "collec+ism",
+  "shalu",
+  "㈱MOPS",
+  "Legit",
+  "SPRING",
+  "Appias",
+  "enx",
+  "株式会社ソシエ・ワールド",
+  "株式会社アッシュ",
+  "M.SLASH",
+  "株式会社アリレイナ・ホールディングス",
+  "ROSSO",
+  "sizuk / LOA",
+  "AUGUST",
+  "oggi",
+  "HAIR&MAKE ZEST",
+  "insence",
+  "Neolive",
+  "CLAPS",
+  "T.C.GROUP",
+  "Puente",
+  "and Art",
+  "xxxys",
+  "toconova",
+  "ナンバーワンクラブ",
+  "ヨコタコーポレーションGroup",
+  "株式会社フォルテ",
+  "dot.tokyo group",
+  "LAG HAIR WORKS",
+  "アイス",
+  "L'aube spa&hair",
+  "株式会社Loops",
+  "acca",
+  "グランジ",
+  "hair salon M.plus",
+  "UNIX",
+  "Ley",
+  "美容室イレブンカット",
+  "HAIR & MAKE EARTH",
+  "ラクサスプレミアム溝の口",
+  "Anphi",
+  "warm",
+  "株式会社TRIPLE-ef",
+  "lulu.表参道"
 ];
 
-// GASのWebアプリURL
+const TOTAL = BOOTHS.length; // 62
 const GAS_URL = "https://script.google.com/macros/s/AKfycbxIwPsNPf86j_K9chptAoLbhxiotsLAOfuCpi75CFT3SVZgOYl3vg8rNIP5iwvowuW7/exec";
-
-// ================================================================
 
 let school = '';
 let grade  = '';
+let stamps = {};
 
-// 選択状態をチェックしてボタンを有効化
+const QUEUE_KEY = 'bdoors2026_queue';
+let queue = JSON.parse(localStorage.getItem(QUEUE_KEY) || '[]');
+
 function checkReady() {
   const s = document.getElementById('select-school').value;
   const g = document.getElementById('select-grade').value;
-  const btn = document.getElementById('start-btn');
-  btn.classList.toggle('ready', s !== '' && g !== '');
+  document.getElementById('start-btn').classList.toggle('ready', s !== '' && g !== '');
 }
 
-// スタンプラリー開始
 function startStampRally() {
   school = document.getElementById('select-school').value;
   grade  = document.getElementById('select-grade').value;
   if (!school || !grade) return;
 
-  // 入力画面を非表示、スタンプ画面を表示
   document.getElementById('input-screen').style.display = 'none';
   document.getElementById('stamp-screen').classList.add('active');
-
-  // バッジに反映
   document.getElementById('badge-school').textContent = school;
   document.getElementById('badge-grade').textContent  = grade;
 
-  // ローカルストレージのキーを設定
+  stamps = JSON.parse(localStorage.getItem(storageKey()) || '{}');
   buildGrid();
 
-  // ブースQRから直接来た場合の処理
+  // ブースQRから直接来た場合
   const params = new URLSearchParams(location.search);
   const boothParam = params.get('booth');
   if (boothParam) {
     const boothNum = parseInt(boothParam);
-    if (boothNum >= 1 && boothNum <= 63) {
+    if (boothNum >= 1 && boothNum <= TOTAL) {
       setTimeout(() => {
-        if (!stamps[boothNum]) {
-          doStamp(boothNum, BOOTHS[boothNum - 1]);
-        }
+        if (!stamps[boothNum]) doStamp(boothNum, BOOTHS[boothNum - 1]);
       }, 400);
     }
   }
 }
 
-// ストレージキー（学校名・学年ごとに分ける）
 function storageKey() {
   return 'bdoors2026_' + school + '_' + grade;
 }
 
-let stamps = {};
-
-// 送信待ちキュー
-const QUEUE_KEY = 'bdoors2026_queue';
-let queue = JSON.parse(localStorage.getItem(QUEUE_KEY) || '[]');
-
-// ブースグリッドを生成
 function buildGrid() {
-  stamps = JSON.parse(localStorage.getItem(storageKey()) || '{}');
   const grid = document.getElementById('booth-grid');
   grid.innerHTML = '';
   BOOTHS.forEach((name, i) => {
@@ -553,23 +574,14 @@ function buildGrid() {
   updateProgress();
 }
 
-// 進捗を更新
 function updateProgress() {
   const count = Object.keys(stamps).length;
   document.getElementById('stamp-count').textContent = count;
-  const pct = Math.min((count / 63) * 100, 100);
-  document.getElementById('progress-bar').style.width = pct + '%';
-  if (count >= 5) {
-    document.getElementById('banner-step1').classList.add('show');
-  }
-  if (count >= 63) {
-    setTimeout(() => {
-      document.getElementById('complete-screen').classList.add('active');
-    }, 800);
-  }
+  document.getElementById('progress-bar').style.width = Math.min((count / TOTAL) * 100, 100) + '%';
+  if (count >= 5) document.getElementById('banner-step1').classList.add('show');
+  if (count >= TOTAL) setTimeout(() => document.getElementById('complete-screen').classList.add('active'), 800);
 }
 
-// スタンプを押す
 function doStamp(boothNum, boothName) {
   if (stamps[boothNum]) return;
   const now = new Date();
@@ -577,18 +589,12 @@ function doStamp(boothNum, boothName) {
   stamps[boothNum] = { time: timeStr, boothName };
   localStorage.setItem(storageKey(), JSON.stringify(stamps));
 
-  const record = {
-    school, grade,
-    boothNum, boothName,
-    timestamp: now.toISOString()
-  };
-  queue.push(record);
+  queue.push({ school, grade, boothNum, boothName, timestamp: now.toISOString() });
   localStorage.setItem(QUEUE_KEY, JSON.stringify(queue));
   sendQueue();
   buildGrid();
 }
 
-// キューをGASに送信
 async function sendQueue() {
   if (queue.length === 0 || !navigator.onLine) return;
   const toSend = [...queue];
@@ -606,9 +612,6 @@ async function sendQueue() {
 }
 
 window.addEventListener('online', sendQueue);
-
-// ページ読み込み時：ブースQRから来た場合は入力画面を表示したまま待つ
-// （startStampRally()内でブース処理を行う）
 </script>
 </body>
 </html>
