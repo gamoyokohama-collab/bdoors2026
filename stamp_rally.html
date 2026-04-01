@@ -26,8 +26,6 @@ body {
   min-height: 100vh;
   padding-bottom: 100px;
 }
-
-/* ========== 入力画面 ========== */
 .input-screen {
   min-height: 100vh;
   display: flex;
@@ -37,441 +35,91 @@ body {
   padding: 32px 24px;
   background: linear-gradient(160deg, #0d1b3e 0%, #1a0a2e 50%, #0d2211 100%);
 }
-.input-logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 32px;
-  letter-spacing: 4px;
-  color: #fff;
-  text-align: center;
-  margin-bottom: 4px;
-}
-.input-sub {
-  font-size: 11px;
-  letter-spacing: 3px;
-  color: var(--col-accent);
-  text-align: center;
-  margin-bottom: 40px;
-}
-.input-card {
-  background: #ffffff0d;
-  border: 1px solid var(--col-border);
-  border-radius: 16px;
-  padding: 28px 24px;
-  width: 100%;
-  max-width: 360px;
-}
-.input-card h2 {
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 24px;
-  text-align: center;
-}
-.input-label {
-  font-size: 12px;
-  color: var(--col-muted);
-  margin-bottom: 8px;
-  display: block;
-}
+.input-logo { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 4px; color: #fff; text-align: center; margin-bottom: 4px; }
+.input-sub { font-size: 11px; letter-spacing: 3px; color: var(--col-accent); text-align: center; margin-bottom: 40px; }
+.input-card { background: #ffffff0d; border: 1px solid var(--col-border); border-radius: 16px; padding: 28px 24px; width: 100%; max-width: 360px; }
+.input-card h2 { font-size: 16px; font-weight: 700; margin-bottom: 24px; text-align: center; }
+.input-label { font-size: 12px; color: var(--col-muted); margin-bottom: 8px; display: block; }
 .input-select {
-  width: 100%;
-  padding: 14px 16px;
-  border-radius: 10px;
-  border: 1px solid var(--col-border);
-  background: #ffffff0a;
-  color: var(--col-text);
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: 15px;
-  margin-bottom: 20px;
-  appearance: none;
-  -webkit-appearance: none;
+  width: 100%; padding: 14px 16px; border-radius: 10px; border: 1px solid var(--col-border);
+  background: #ffffff0a; color: var(--col-text); font-family: 'Noto Sans JP', sans-serif;
+  font-size: 15px; margin-bottom: 20px; appearance: none; -webkit-appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238888aa' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 16px center;
+  background-repeat: no-repeat; background-position: right 16px center;
 }
 .input-select:focus { outline: none; border-color: var(--col-accent); }
 .input-select option { background: #1a1a2e; color: var(--col-text); }
 .start-btn {
-  width: 100%;
-  padding: 16px;
-  border-radius: 12px;
-  border: none;
+  width: 100%; padding: 16px; border-radius: 12px; border: none;
   background: linear-gradient(135deg, var(--col-accent), var(--col-accent2));
-  color: #fff;
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  opacity: 0.4;
-  transition: opacity 0.2s;
+  color: #fff; font-family: 'Noto Sans JP', sans-serif; font-size: 16px; font-weight: 700;
+  cursor: pointer; opacity: 0.4; transition: opacity 0.2s;
 }
 .start-btn.ready { opacity: 1; }
-
-/* ========== スタンプカード画面 ========== */
 .stamp-screen { display: none; }
 .stamp-screen.active { display: block; }
-
 .header {
   background: linear-gradient(135deg, #0d1b3e 0%, #1a0a2e 50%, #0d2211 100%);
-  padding: 20px 20px 16px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+  padding: 20px 20px 16px; text-align: center; position: relative; overflow: hidden;
   border-bottom: 1px solid var(--col-border);
 }
-.header::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, #4f8aff22 0%, transparent 70%);
-}
-.header-logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 24px;
-  letter-spacing: 4px;
-  color: #fff;
-  position: relative;
-}
-.header-info {
-  margin-top: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  position: relative;
-}
-.badge {
-  border-radius: 20px;
-  padding: 4px 14px;
-  font-size: 12px;
-  font-weight: 700;
-}
+.header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, #4f8aff22 0%, transparent 70%); }
+.header-logo { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 4px; color: #fff; position: relative; }
+.header-info { margin-top: 12px; display: flex; align-items: center; justify-content: center; gap: 10px; position: relative; }
+.badge { border-radius: 20px; padding: 4px 14px; font-size: 12px; font-weight: 700; }
 .badge.school { color: var(--col-accent); border: 1px solid var(--col-accent)44; background: var(--col-accent)11; }
 .badge.grade  { color: var(--col-accent2); border: 1px solid var(--col-accent2)44; background: var(--col-accent2)11; }
-
-.progress-section {
-  padding: 16px 20px 14px;
-  background: var(--col-card);
-  border-bottom: 1px solid var(--col-border);
-}
-.progress-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 8px;
-}
-.progress-count {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 38px;
-  line-height: 1;
-  color: var(--col-accent);
-}
-.progress-count span {
-  font-size: 18px;
-  color: var(--col-muted);
-  font-family: 'Noto Sans JP', sans-serif;
-  font-weight: 400;
-}
+.progress-section { padding: 16px 20px 14px; background: var(--col-card); border-bottom: 1px solid var(--col-border); }
+.progress-row { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 8px; }
+.progress-count { font-family: 'Bebas Neue', sans-serif; font-size: 38px; line-height: 1; color: var(--col-accent); }
+.progress-count span { font-size: 18px; color: var(--col-muted); font-family: 'Noto Sans JP', sans-serif; font-weight: 400; }
 .progress-label { font-size: 11px; color: var(--col-muted); text-align: right; line-height: 1.5; }
 .progress-bar-wrap { background: #ffffff10; border-radius: 4px; height: 6px; overflow: hidden; }
-.progress-bar {
-  height: 100%;
-  border-radius: 4px;
-  background: linear-gradient(90deg, var(--col-accent), var(--col-accent2));
-  transition: width 0.6s cubic-bezier(.4,0,.2,1);
-}
-
-.mission-banner {
-  margin: 12px 16px 0;
-  border-radius: 10px;
-  padding: 10px 14px;
-  display: none;
-  align-items: center;
-  gap: 10px;
-  font-size: 13px;
-  font-weight: 700;
-}
+.progress-bar { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--col-accent), var(--col-accent2)); transition: width 0.6s cubic-bezier(.4,0,.2,1); }
+.mission-banner { margin: 12px 16px 0; border-radius: 10px; padding: 10px 14px; display: none; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; }
 .mission-banner.show { display: flex; }
-.mission-banner.step1 {
-  background: linear-gradient(135deg, #fbbf2420, #f59e0b10);
-  border: 1px solid var(--col-gold)44;
-  color: var(--col-gold);
-}
-.mission-icon {
-  width: 28px; height: 28px;
-  border-radius: 50%;
-  background: var(--col-gold)22;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 14px; flex-shrink: 0;
-}
-
-/* QRスキャンボタン（固定フッター） */
-.scan-footer {
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  padding: 16px 20px 32px;
-  background: linear-gradient(transparent, var(--col-bg) 40%);
-  display: none;
-  z-index: 50;
-}
+.mission-banner.step1 { background: linear-gradient(135deg, #fbbf2420, #f59e0b10); border: 1px solid var(--col-gold)44; color: var(--col-gold); }
+.mission-icon { width: 28px; height: 28px; border-radius: 50%; background: var(--col-gold)22; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+.scan-footer { position: fixed; bottom: 0; left: 0; right: 0; padding: 16px 20px 36px; background: linear-gradient(transparent, var(--col-bg) 40%); display: none; z-index: 50; }
 .scan-footer.active { display: block; }
 .scan-btn {
-  width: 100%;
-  padding: 18px;
-  border-radius: 16px;
-  border: none;
+  width: 100%; padding: 18px; border-radius: 16px; border: none;
   background: linear-gradient(135deg, var(--col-accent), var(--col-accent2));
-  color: #fff;
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: 17px;
-  font-weight: 700;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+  color: #fff; font-family: 'Noto Sans JP', sans-serif; font-size: 17px; font-weight: 700;
+  cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
   box-shadow: 0 4px 24px var(--col-accent)44;
 }
-
-.section-title {
-  padding: 16px 16px 8px;
-  font-size: 11px;
-  letter-spacing: 2px;
-  color: var(--col-muted);
-}
-
-.booth-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 6px;
-  padding: 0 12px;
-}
-@media (min-width: 480px) {
-  .booth-grid { grid-template-columns: repeat(5, 1fr); }
-}
-
-.booth-card {
-  aspect-ratio: 1;
-  border-radius: 8px;
-  border: 1px solid var(--col-border);
-  background: var(--col-card);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
-  position: relative;
-  overflow: hidden;
-}
-.booth-card.stamped {
-  border-color: var(--col-stamped)66;
-  background: linear-gradient(135deg, #052210, #0a1a0a);
-}
-.booth-card.stamped::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, var(--col-stamped)18 0%, transparent 70%);
-}
-.booth-number {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 20px;
-  line-height: 1;
-  color: var(--col-muted);
-  transition: opacity 0.2s;
-}
+.section-title { padding: 16px 16px 8px; font-size: 11px; letter-spacing: 2px; color: var(--col-muted); }
+.booth-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; padding: 0 12px; }
+@media (min-width: 480px) { .booth-grid { grid-template-columns: repeat(5, 1fr); } }
+.booth-card { aspect-ratio: 1; border-radius: 8px; border: 1px solid var(--col-border); background: var(--col-card); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; position: relative; overflow: hidden; }
+.booth-card.stamped { border-color: var(--col-stamped)66; background: linear-gradient(135deg, #052210, #0a1a0a); }
+.booth-card.stamped::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at center, var(--col-stamped)18 0%, transparent 70%); }
+.booth-number { font-family: 'Bebas Neue', sans-serif; font-size: 20px; line-height: 1; color: var(--col-muted); transition: opacity 0.2s; }
 .booth-card.stamped .booth-number { opacity: 0; }
-.stamp-mark {
-  font-size: 20px;
-  opacity: 0;
-  transform: scale(0);
-  transition: all 0.3s cubic-bezier(.34,1.56,.64,1);
-  position: absolute;
-}
+.stamp-mark { font-size: 20px; opacity: 0; transform: scale(0); transition: all 0.3s cubic-bezier(.34,1.56,.64,1); position: absolute; }
 .booth-card.stamped .stamp-mark { opacity: 1; transform: scale(1); }
-.booth-name {
-  font-size: 8px;
-  color: var(--col-muted);
-  text-align: center;
-  line-height: 1.2;
-  padding: 0 3px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: 100%;
-  transition: color 0.2s;
-}
+.booth-name { font-size: 8px; color: var(--col-muted); text-align: center; line-height: 1.2; padding: 0 3px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; transition: color 0.2s; }
 .booth-card.stamped .booth-name { color: var(--col-stamped)bb; }
-.visit-time {
-  font-size: 7px;
-  color: var(--col-stamped)88;
-  position: absolute;
-  bottom: 3px;
-  right: 4px;
-}
-
-/* ========== カメラスキャン画面 ========== */
-.camera-screen {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: #000;
-  z-index: 100;
-  flex-direction: column;
-}
-.camera-screen.active { display: flex; }
-
-.camera-header {
-  padding: 20px 20px 12px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #000;
-  z-index: 10;
-}
-.camera-title { font-size: 16px; font-weight: 700; color: #fff; }
-.camera-close {
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  background: #ffffff22;
-  border: none;
-  color: #fff;
-  font-size: 18px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.camera-wrap {
-  flex: 1;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#camera-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.camera-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-}
-.scan-frame {
-  width: 220px;
-  height: 220px;
-  position: relative;
-}
-.scan-frame::before,
-.scan-frame::after,
-.scan-frame .corner-br,
-.scan-frame .corner-bl {
-  content: '';
-  position: absolute;
-  width: 36px;
-  height: 36px;
-  border-color: #4f8aff;
-  border-style: solid;
-}
-.scan-frame::before  { top: 0;    left: 0;  border-width: 3px 0 0 3px; border-radius: 4px 0 0 0; }
-.scan-frame::after   { top: 0;    right: 0; border-width: 3px 3px 0 0; border-radius: 0 4px 0 0; }
-.scan-frame .corner-br { bottom: 0; right: 0; border-width: 0 3px 3px 0; border-radius: 0 0 4px 0; }
-.scan-frame .corner-bl { bottom: 0; left: 0;  border-width: 0 0 3px 3px; border-radius: 0 0 0 4px; }
-
-.scan-line {
-  position: absolute;
-  left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #4f8aff, transparent);
-  animation: scanAnim 2s ease-in-out infinite;
-  top: 0;
-}
-@keyframes scanAnim {
-  0%   { top: 10px; opacity: 1; }
-  50%  { top: 210px; opacity: 1; }
-  100% { top: 10px; opacity: 1; }
-}
-
-.camera-msg {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  padding: 20px;
-  background: linear-gradient(transparent, #000000cc);
-  text-align: center;
-  font-size: 13px;
-  color: #ffffffaa;
-}
-
-/* スタンプ成功トースト */
-.toast {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.8);
-  background: var(--col-stamped);
-  color: #fff;
-  padding: 20px 32px;
-  border-radius: 16px;
-  font-size: 18px;
-  font-weight: 700;
-  text-align: center;
-  opacity: 0;
-  transition: all 0.3s cubic-bezier(.34,1.56,.64,1);
-  z-index: 300;
-  pointer-events: none;
-  min-width: 200px;
-}
-.toast.show {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-}
+.visit-time { font-size: 7px; color: var(--col-stamped)88; position: absolute; bottom: 3px; right: 4px; }
+.loading-overlay { display: none; position: fixed; inset: 0; background: #000000cc; z-index: 150; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }
+.loading-overlay.active { display: flex; }
+.loading-spinner { width: 48px; height: 48px; border: 3px solid #ffffff22; border-top-color: var(--col-accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading-text { font-size: 14px; color: #ffffffaa; }
+.toast { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8); background: var(--col-stamped); color: #fff; padding: 20px 32px; border-radius: 16px; font-size: 16px; font-weight: 700; text-align: center; opacity: 0; transition: all 0.3s cubic-bezier(.34,1.56,.64,1); z-index: 300; pointer-events: none; min-width: 200px; white-space: pre-line; line-height: 1.6; }
+.toast.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 .toast.error { background: #ef4444; }
-
-/* 完了画面 */
-.complete-screen {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: #0a0a14;
-  z-index: 200;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 40px;
-}
+.complete-screen { display: none; position: fixed; inset: 0; background: #0a0a14; z-index: 200; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px; }
 .complete-screen.active { display: flex; }
 .complete-emoji { font-size: 64px; margin-bottom: 20px; }
-.complete-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 40px;
-  letter-spacing: 4px;
-  color: var(--col-gold);
-  margin-bottom: 12px;
-}
+.complete-title { font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 4px; color: var(--col-gold); margin-bottom: 12px; }
 .complete-msg { font-size: 14px; color: var(--col-muted); line-height: 1.8; margin-bottom: 32px; }
-.complete-btn {
-  padding: 14px 40px;
-  border-radius: 100px;
-  border: 1px solid var(--col-gold)66;
-  background: var(--col-gold)11;
-  color: var(--col-gold);
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-}
+.complete-btn { padding: 14px 40px; border-radius: 100px; border: 1px solid var(--col-gold)66; background: var(--col-gold)11; color: var(--col-gold); font-family: 'Noto Sans JP', sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; }
 </style>
 </head>
 <body>
 
-<!-- ========== 入力画面 ========== -->
 <div class="input-screen" id="input-screen">
   <div class="input-logo">B.DOORS KANAGAWA 2026</div>
   <div class="input-sub">Stamp Rally</div>
@@ -502,7 +150,6 @@ body {
   </div>
 </div>
 
-<!-- ========== スタンプカード画面 ========== -->
 <div class="stamp-screen" id="stamp-screen">
   <div class="header">
     <div class="header-logo">B.DOORS KANAGAWA 2026</div>
@@ -511,7 +158,6 @@ body {
       <span class="badge grade" id="badge-grade"></span>
     </div>
   </div>
-
   <div class="progress-section">
     <div class="progress-row">
       <div class="progress-count"><span id="stamp-count">0</span><span> / 62</span></div>
@@ -521,19 +167,16 @@ body {
       <div class="progress-bar" id="progress-bar" style="width:0%"></div>
     </div>
   </div>
-
   <div class="mission-banner step1" id="banner-step1">
     <div class="mission-icon">🎉</div>
     <div>5件達成！抽選会場へ行けるようになりました</div>
   </div>
-
   <div class="section-title">BOOTH LIST</div>
   <div class="booth-grid" id="booth-grid"></div>
 </div>
 
-<!-- QRスキャンボタン（固定フッター） -->
 <div class="scan-footer" id="scan-footer">
-  <button class="scan-btn" onclick="openCamera()">
+  <button class="scan-btn" onclick="document.getElementById('qr-input').click()">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
       <polyline points="23 7 23 1 17 1"/><line x1="16" y1="8" x2="23" y2="1"/>
       <polyline points="1 17 1 23 7 23"/><line x1="8" y1="16" x2="1" y2="23"/>
@@ -541,32 +184,17 @@ body {
     </svg>
     ブースのQRコードを読む
   </button>
+  <input type="file" id="qr-input" accept="image/*" capture="environment"
+    style="display:none;" onchange="handleQRPhoto(this)">
 </div>
 
-<!-- ========== カメラスキャン画面 ========== -->
-<div class="camera-screen" id="camera-screen">
-  <div class="camera-header">
-    <div class="camera-title">QRコードをかざしてください</div>
-    <button class="camera-close" onclick="closeCamera()">✕</button>
-  </div>
-  <div class="camera-wrap">
-    <video id="camera-video" autoplay playsinline muted></video>
-    <canvas id="camera-canvas" style="display:none;"></canvas>
-    <div class="camera-overlay">
-      <div class="scan-frame">
-        <div class="scan-line"></div>
-        <div class="corner-br"></div>
-        <div class="corner-bl"></div>
-      </div>
-    </div>
-    <div class="camera-msg">ブースに設置されたQRコードに向けてください</div>
-  </div>
+<div class="loading-overlay" id="loading-overlay">
+  <div class="loading-spinner"></div>
+  <div class="loading-text">QRコードを読み取り中...</div>
 </div>
 
-<!-- スタンプ成功トースト -->
 <div class="toast" id="toast"></div>
 
-<!-- 完了画面 -->
 <div class="complete-screen" id="complete-screen">
   <div class="complete-emoji">🏆</div>
   <div class="complete-title">全ブース制覇！</div>
@@ -591,17 +219,14 @@ const BOOTHS = [
   "株式会社TRIPLE-ef","lulu.表参道"
 ];
 
-const TOTAL = 62;
+const TOTAL    = 62;
 const BASE_URL = "https://gamoyokohama-collab.github.io/bdoors2026/stamp_rally.html";
 const GAS_URL  = "https://script.google.com/macros/s/AKfycbxIwPsNPf86j_K9chptAoLbhxiotsLAOfuCpi75CFT3SVZgOYl3vg8rNIP5iwvowuW7/exec";
 
 let school = '', grade = '', stamps = {};
-let videoStream = null, scanTimer = null, lastScanned = '';
-
 const QUEUE_KEY = 'bdoors2026_queue';
 let queue = JSON.parse(localStorage.getItem(QUEUE_KEY) || '[]');
 
-// ========== 入力画面 ==========
 function checkReady() {
   const s = document.getElementById('select-school').value;
   const g = document.getElementById('select-grade').value;
@@ -612,23 +237,18 @@ function startStampRally() {
   school = document.getElementById('select-school').value;
   grade  = document.getElementById('select-grade').value;
   if (!school || !grade) return;
-
   document.getElementById('input-screen').style.display = 'none';
   document.getElementById('stamp-screen').classList.add('active');
   document.getElementById('scan-footer').classList.add('active');
   document.getElementById('badge-school').textContent = school;
   document.getElementById('badge-grade').textContent  = grade;
-
   stamps = JSON.parse(localStorage.getItem(storageKey()) || '{}');
   buildGrid();
   sendQueue();
 }
 
-function storageKey() {
-  return 'bdoors2026_' + school + '_' + grade;
-}
+function storageKey() { return 'bdoors2026_' + school + '_' + grade; }
 
-// ========== グリッド ==========
 function buildGrid() {
   const grid = document.getElementById('booth-grid');
   grid.innerHTML = '';
@@ -641,7 +261,7 @@ function buildGrid() {
       <div class="booth-number">${num}</div>
       <div class="stamp-mark">✓</div>
       <div class="booth-name">${name}</div>
-      ${isStamped && stamps[num].time ? `<div class="visit-time">${stamps[num].time}</div>` : ''}
+      ${isStamped && stamps[num].time ? '<div class="visit-time">' + stamps[num].time + '</div>' : ''}
     `;
     grid.appendChild(card);
   });
@@ -656,7 +276,52 @@ function updateProgress() {
   if (count >= TOTAL) setTimeout(() => document.getElementById('complete-screen').classList.add('active'), 800);
 }
 
-// ========== スタンプ処理 ==========
+function handleQRPhoto(input) {
+  if (!input.files || !input.files[0]) return;
+  const file = input.files[0];
+  input.value = '';
+  document.getElementById('loading-overlay').classList.add('active');
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const img = new Image();
+    img.onload = function() {
+      const canvas = document.createElement('canvas');
+      canvas.width  = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const code = jsQR(imageData.data, canvas.width, canvas.height, { inversionAttempts: 'dontInvert' });
+      document.getElementById('loading-overlay').classList.remove('active');
+      if (!code) {
+        showToast('QRコードを読み取れませんでした\nもう一度試してください', true);
+        return;
+      }
+      handleQRResult(code.data);
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function handleQRResult(url) {
+  if (!url.includes('stamp_rally.html')) {
+    showToast('このQRコードは\n対応していません', true);
+    return;
+  }
+  try {
+    const params = new URL(url).searchParams;
+    const boothNum = parseInt(params.get('booth'));
+    if (!boothNum || boothNum < 1 || boothNum > TOTAL) {
+      showToast('ブース番号が\n見つかりません', true);
+      return;
+    }
+    doStamp(boothNum, BOOTHS[boothNum - 1]);
+  } catch(e) {
+    showToast('QRコードの読み取りに\n失敗しました', true);
+  }
+}
+
 function doStamp(boothNum, boothName) {
   if (stamps[boothNum]) {
     showToast('このブースは\nすでに訪問済みです', true);
@@ -666,95 +331,21 @@ function doStamp(boothNum, boothName) {
   const timeStr = now.getHours() + ':' + String(now.getMinutes()).padStart(2,'0');
   stamps[boothNum] = { time: timeStr, boothName };
   localStorage.setItem(storageKey(), JSON.stringify(stamps));
-
   queue.push({ school, grade, boothNum, boothName, timestamp: now.toISOString() });
   localStorage.setItem(QUEUE_KEY, JSON.stringify(queue));
   sendQueue();
   buildGrid();
-  showToast('✓ ' + boothName + '\nスタンプを押しました！', false);
+  showToast('✓  ' + boothName + '\nスタンプを押しました！', false);
 }
 
-// ========== カメラ ==========
-async function openCamera() {
-  const screen = document.getElementById('camera-screen');
-  screen.classList.add('active');
-  lastScanned = '';
-
-  try {
-    videoStream = await navigator.mediaDevices.getUserMedia({
-      video: { facingMode: 'environment' }, audio: false
-    });
-    const video = document.getElementById('camera-video');
-    video.srcObject = videoStream;
-    video.play();
-    video.addEventListener('loadedmetadata', startScan);
-  } catch(e) {
-    closeCamera();
-    showToast('カメラを起動できません\nブラウザの設定で\nカメラを許可してください', true);
-  }
-}
-
-function startScan() {
-  const video  = document.getElementById('camera-video');
-  const canvas = document.getElementById('camera-canvas');
-  const ctx    = canvas.getContext('2d');
-
-  scanTimer = setInterval(() => {
-    if (video.readyState !== video.HAVE_ENOUGH_DATA) return;
-    canvas.width  = video.videoWidth;
-    canvas.height = video.videoHeight;
-    ctx.drawImage(video, 0, 0);
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    const code = jsQR(imageData.data, canvas.width, canvas.height, { inversionAttempts: 'dontInvert' });
-    if (code && code.data && code.data !== lastScanned) {
-      lastScanned = code.data;
-      handleQRResult(code.data);
-    }
-  }, 300);
-}
-
-function handleQRResult(url) {
-  // このサイトのブースQRかどうか判定
-  if (!url.includes('stamp_rally.html')) {
-    showToast('このQRコードは\n対応していません', true);
-    return;
-  }
-  const params = new URL(url).searchParams;
-  const boothNum = parseInt(params.get('booth'));
-  if (!boothNum || boothNum < 1 || boothNum > TOTAL) {
-    showToast('ブース番号が\n見つかりません', true);
-    return;
-  }
-  const boothName = BOOTHS[boothNum - 1];
-  closeCamera();
-  setTimeout(() => doStamp(boothNum, boothName), 300);
-}
-
-function closeCamera() {
-  clearInterval(scanTimer);
-  scanTimer = null;
-  if (videoStream) {
-    videoStream.getTracks().forEach(t => t.stop());
-    videoStream = null;
-  }
-  document.getElementById('camera-screen').classList.remove('active');
-  lastScanned = '';
-}
-
-// ========== トースト通知 ==========
 function showToast(msg, isError) {
   const toast = document.getElementById('toast');
   toast.textContent = msg;
   toast.className = 'toast' + (isError ? ' error' : '');
-  // 改行対応
-  toast.style.whiteSpace = 'pre-line';
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => toast.classList.add('show'));
-  });
-  setTimeout(() => toast.classList.remove('show'), 2200);
+  requestAnimationFrame(() => requestAnimationFrame(() => toast.classList.add('show')));
+  setTimeout(() => toast.classList.remove('show'), 2500);
 }
 
-// ========== 送信キュー ==========
 async function sendQueue() {
   if (queue.length === 0 || !navigator.onLine) return;
   const toSend = [...queue];
@@ -766,9 +357,7 @@ async function sendQueue() {
     }
     queue = [];
     localStorage.setItem(QUEUE_KEY, JSON.stringify(queue));
-  } catch(e) {
-    console.log('送信待機中...');
-  }
+  } catch(e) { console.log('送信待機中...'); }
 }
 
 window.addEventListener('online', sendQueue);
