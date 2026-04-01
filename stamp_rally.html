@@ -28,7 +28,94 @@ body {
   padding-bottom: 40px;
 }
 
-/* ヘッダー */
+/* ========== 入力画面 ========== */
+.input-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  background: linear-gradient(160deg, #0d1b3e 0%, #1a0a2e 50%, #0d2211 100%);
+}
+.input-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  letter-spacing: 4px;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 4px;
+}
+.input-sub {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--col-accent);
+  text-align: center;
+  margin-bottom: 40px;
+}
+.input-card {
+  background: #ffffff0d;
+  border: 1px solid var(--col-border);
+  border-radius: 16px;
+  padding: 28px 24px;
+  width: 100%;
+  max-width: 360px;
+}
+.input-card h2 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-align: center;
+  color: var(--col-text);
+}
+.input-label {
+  font-size: 12px;
+  color: var(--col-muted);
+  margin-bottom: 8px;
+  display: block;
+}
+.input-select {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--col-border);
+  background: #ffffff0a;
+  color: var(--col-text);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 15px;
+  margin-bottom: 20px;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238888aa' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+}
+.input-select:focus {
+  outline: none;
+  border-color: var(--col-accent);
+}
+.input-select option { background: #1a1a2e; color: var(--col-text); }
+.start-btn {
+  width: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, var(--col-accent), var(--col-accent2));
+  color: #fff;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 4px;
+  opacity: 0.4;
+  transition: opacity 0.2s;
+}
+.start-btn.ready { opacity: 1; }
+
+/* ========== スタンプカード画面 ========== */
+.stamp-screen { display: none; }
+.stamp-screen.active { display: block; }
+
 .header {
   background: linear-gradient(135deg, #0d1b3e 0%, #1a0a2e 50%, #0d2211 100%);
   padding: 24px 20px 20px;
@@ -78,7 +165,6 @@ body {
 .badge.school { color: var(--col-accent); border-color: var(--col-accent)44; background: var(--col-accent)11; }
 .badge.grade { color: var(--col-accent2); border-color: var(--col-accent2)44; background: var(--col-accent2)11; }
 
-/* 進捗バー */
 .progress-section {
   padding: 20px 20px 16px;
   background: var(--col-card);
@@ -108,7 +194,6 @@ body {
   text-align: right;
   line-height: 1.5;
 }
-
 .progress-bar-wrap {
   background: #ffffff10;
   border-radius: 4px;
@@ -122,17 +207,15 @@ body {
   transition: width 0.6s cubic-bezier(.4,0,.2,1);
 }
 
-/* ミッション達成バナー */
 .mission-banner {
   margin: 14px 20px 0;
   border-radius: 10px;
   padding: 12px 16px;
-  display: flex;
+  display: none;
   align-items: center;
   gap: 10px;
   font-size: 13px;
   font-weight: 700;
-  display: none;
 }
 .mission-banner.show { display: flex; }
 .mission-banner.step1 {
@@ -152,7 +235,6 @@ body {
   flex-shrink: 0;
 }
 
-/* セクションタイトル */
 .section-title {
   padding: 20px 20px 10px;
   font-size: 11px;
@@ -161,19 +243,16 @@ body {
   text-transform: uppercase;
 }
 
-/* グリッド */
 .booth-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
   padding: 0 16px;
 }
-
 @media (min-width: 480px) {
   .booth-grid { grid-template-columns: repeat(5, 1fr); }
 }
 
-/* ブースカード */
 .booth-card {
   aspect-ratio: 1;
   border-radius: 10px;
@@ -201,16 +280,14 @@ body {
   inset: 0;
   background: radial-gradient(circle at center, var(--col-stamped)18 0%, transparent 70%);
 }
-
 .booth-number {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 22px;
   line-height: 1;
   color: var(--col-muted);
-  transition: color 0.2s;
+  transition: color 0.2s, opacity 0.2s;
 }
-.booth-card.stamped .booth-number { color: var(--col-stamped); }
-
+.booth-card.stamped .booth-number { color: var(--col-stamped); opacity: 0; }
 .stamp-mark {
   font-size: 20px;
   opacity: 0;
@@ -218,13 +295,7 @@ body {
   transition: all 0.3s cubic-bezier(.34,1.56,.64,1);
   position: absolute;
 }
-.booth-card.stamped .stamp-mark {
-  opacity: 1;
-  transform: scale(1);
-}
-.booth-card.stamped .booth-number { opacity: 0; }
-
-/* 会社名 */
+.booth-card.stamped .stamp-mark { opacity: 1; transform: scale(1); }
 .booth-name {
   font-size: 9px;
   color: var(--col-muted);
@@ -238,8 +309,6 @@ body {
   transition: color 0.2s;
 }
 .booth-card.stamped .booth-name { color: var(--col-stamped)bb; }
-
-/* 訪問時刻 */
 .visit-time {
   font-size: 8px;
   color: var(--col-stamped)88;
@@ -248,59 +317,12 @@ body {
   right: 5px;
 }
 
-/* QRスキャンモーダル */
-.overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: #000000cc;
-  z-index: 100;
-  align-items: flex-end;
-  justify-content: center;
-}
-.overlay.active { display: flex; }
-.sheet {
-  background: #1a1a2e;
-  border-radius: 20px 20px 0 0;
-  width: 100%;
-  max-width: 480px;
-  padding: 32px 28px 48px;
-  border-top: 1px solid var(--col-border);
-  animation: slideUp 0.3s cubic-bezier(.4,0,.2,1);
-}
-@keyframes slideUp {
-  from { transform: translateY(100%); }
-  to   { transform: translateY(0); }
-}
-.sheet h2 {
-  font-size: 20px;
-  font-weight: 900;
-  margin-bottom: 8px;
-}
-.sheet p {
-  font-size: 13px;
+.footer-note {
+  text-align: center;
+  font-size: 10px;
   color: var(--col-muted);
-  line-height: 1.7;
-  margin-bottom: 24px;
-}
-.sheet-btn {
-  width: 100%;
-  padding: 16px;
-  border-radius: 12px;
-  border: none;
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
-.sheet-btn.primary {
-  background: linear-gradient(135deg, var(--col-accent), var(--col-accent2));
-  color: #fff;
-}
-.sheet-btn.cancel {
-  background: #ffffff10;
-  color: var(--col-muted);
+  padding: 24px 20px 0;
+  line-height: 1.8;
 }
 
 /* 完了画面 */
@@ -342,63 +364,78 @@ body {
   font-weight: 700;
   cursor: pointer;
 }
-
-/* フッター */
-.footer-note {
-  text-align: center;
-  font-size: 10px;
-  color: var(--col-muted);
-  padding: 24px 20px 0;
-  line-height: 1.8;
-}
 </style>
 </head>
 <body>
 
-<!-- ヘッダー -->
-<div class="header">
-  <div class="header-logo">B.DOORS KANAGAWA 2026</div>
-  <div class="header-sub">Stamp Rally</div>
-  <div class="header-info">
-    <span class="badge school" id="badge-school">学校名</span>
-    <span class="badge grade" id="badge-grade">学年</span>
+<!-- ========== 入力画面 ========== -->
+<div class="input-screen" id="input-screen">
+  <div class="input-logo">B.DOORS KANAGAWA 2026</div>
+  <div class="input-sub">Stamp Rally</div>
+
+  <div class="input-card">
+    <h2>はじめに教えてください</h2>
+
+    <label class="input-label">学校名</label>
+    <select class="input-select" id="select-school" onchange="checkReady()">
+      <option value="">選択してください</option>
+      <!-- ★ここに実際の学校名を追加してください★ -->
+      <option value="A大学">A大学</option>
+      <option value="B大学">B大学</option>
+      <option value="C大学">C大学</option>
+      <option value="D大学">D大学</option>
+      <option value="E大学">E大学</option>
+      <option value="F大学">F大学</option>
+      <option value="G大学">G大学</option>
+    </select>
+
+    <label class="input-label">学年</label>
+    <select class="input-select" id="select-grade" onchange="checkReady()">
+      <option value="">選択してください</option>
+      <option value="1年生">1年生</option>
+      <option value="2年生">2年生</option>
+      <option value="3年生">3年生</option>
+    </select>
+
+    <button class="start-btn" id="start-btn" onclick="startStampRally()">
+      スタンプラリーをはじめる
+    </button>
   </div>
 </div>
 
-<!-- 進捗 -->
-<div class="progress-section">
-  <div class="progress-row">
-    <div class="progress-count"><span id="stamp-count">0</span><span> / 63</span></div>
-    <div class="progress-label">5件達成で<br>抽選に参加できます</div>
+<!-- ========== スタンプカード画面 ========== -->
+<div class="stamp-screen" id="stamp-screen">
+
+  <div class="header">
+    <div class="header-logo">B.DOORS KANAGAWA 2026</div>
+    <div class="header-sub">Stamp Rally</div>
+    <div class="header-info">
+      <span class="badge school" id="badge-school"></span>
+      <span class="badge grade" id="badge-grade"></span>
+    </div>
   </div>
-  <div class="progress-bar-wrap">
-    <div class="progress-bar" id="progress-bar" style="width:0%"></div>
+
+  <div class="progress-section">
+    <div class="progress-row">
+      <div class="progress-count"><span id="stamp-count">0</span><span> / 63</span></div>
+      <div class="progress-label">5件達成で<br>抽選に参加できます</div>
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar" id="progress-bar" style="width:0%"></div>
+    </div>
   </div>
-</div>
 
-<!-- ミッション達成バナー -->
-<div class="mission-banner step1" id="banner-step1">
-  <div class="icon">🎉</div>
-  <div>5件達成！抽選会場へ<br>行けるようになりました</div>
-</div>
-
-<div class="section-title">ブース一覧</div>
-
-<!-- ブースグリッド -->
-<div class="booth-grid" id="booth-grid"></div>
-
-<p class="footer-note">
-  各ブースに掲示されているQRコードを読み取って<br>スタンプを集めましょう
-</p>
-
-<!-- QRスキャン誘導モーダル -->
-<div class="overlay" id="overlay">
-  <div class="sheet">
-    <h2 id="sheet-title">ブースを訪問</h2>
-    <p id="sheet-desc">ブースのQRコードを読み取ってスタンプを押しましょう。</p>
-    <button class="sheet-btn primary" onclick="simulateStamp()">✓ スタンプを押す（テスト用）</button>
-    <button class="sheet-btn cancel" onclick="closeSheet()">キャンセル</button>
+  <div class="mission-banner step1" id="banner-step1">
+    <div class="icon">🎉</div>
+    <div>5件達成！抽選会場へ<br>行けるようになりました</div>
   </div>
+
+  <div class="section-title">ブース一覧</div>
+  <div class="booth-grid" id="booth-grid"></div>
+
+  <p class="footer-note">
+    各ブースに掲示されているQRコードを読み取って<br>スタンプを集めましょう
+  </p>
 </div>
 
 <!-- 完了画面 -->
@@ -416,13 +453,8 @@ body {
 
 <script>
 // ================================================================
-//  設定エリア（実際の運用時はここを書き換えます）
+//  設定エリア
 // ================================================================
-
-// URLパラメータから学校名・学年を取得
-const params = new URLSearchParams(location.search);
-const school = params.get('school') || '';
-const grade  = params.get('grade')  || '';
 
 // ブース名（実際のブース名に差し替えてください）
 const BOOTHS = [
@@ -441,26 +473,68 @@ const BOOTHS = [
   "ブース61","ブース62","ブース63"
 ];
 
-// GASのWebアプリURL（後で差し替え）
+// GASのWebアプリURL
 const GAS_URL = "https://script.google.com/macros/s/AKfycbxIwPsNPf86j_K9chptAoLbhxiotsLAOfuCpi75CFT3SVZgOYl3vg8rNIP5iwvowuW7/exec";
+
 // ================================================================
 
-// バッジに学校名・学年を反映
-document.getElementById('badge-school').textContent = school || '（学校名）';
-document.getElementById('badge-grade').textContent  = grade  ? grade + '年生' : '（学年）';
+let school = '';
+let grade  = '';
 
-// スタンプ状態をローカルストレージで管理（オフライン対応）
-const STORAGE_KEY = 'bdoors2026_stamps_' + school + '_' + grade;
-let stamps = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+// 選択状態をチェックしてボタンを有効化
+function checkReady() {
+  const s = document.getElementById('select-school').value;
+  const g = document.getElementById('select-grade').value;
+  const btn = document.getElementById('start-btn');
+  btn.classList.toggle('ready', s !== '' && g !== '');
+}
 
-// 送信待ちキュー（オフライン時に溜めておく）
+// スタンプラリー開始
+function startStampRally() {
+  school = document.getElementById('select-school').value;
+  grade  = document.getElementById('select-grade').value;
+  if (!school || !grade) return;
+
+  // 入力画面を非表示、スタンプ画面を表示
+  document.getElementById('input-screen').style.display = 'none';
+  document.getElementById('stamp-screen').classList.add('active');
+
+  // バッジに反映
+  document.getElementById('badge-school').textContent = school;
+  document.getElementById('badge-grade').textContent  = grade;
+
+  // ローカルストレージのキーを設定
+  buildGrid();
+
+  // ブースQRから直接来た場合の処理
+  const params = new URLSearchParams(location.search);
+  const boothParam = params.get('booth');
+  if (boothParam) {
+    const boothNum = parseInt(boothParam);
+    if (boothNum >= 1 && boothNum <= 63) {
+      setTimeout(() => {
+        if (!stamps[boothNum]) {
+          doStamp(boothNum, BOOTHS[boothNum - 1]);
+        }
+      }, 400);
+    }
+  }
+}
+
+// ストレージキー（学校名・学年ごとに分ける）
+function storageKey() {
+  return 'bdoors2026_' + school + '_' + grade;
+}
+
+let stamps = {};
+
+// 送信待ちキュー
 const QUEUE_KEY = 'bdoors2026_queue';
 let queue = JSON.parse(localStorage.getItem(QUEUE_KEY) || '[]');
 
-let selectedBooth = null;
-
 // ブースグリッドを生成
 function buildGrid() {
+  stamps = JSON.parse(localStorage.getItem(storageKey()) || '{}');
   const grid = document.getElementById('booth-grid');
   grid.innerHTML = '';
   BOOTHS.forEach((name, i) => {
@@ -474,9 +548,6 @@ function buildGrid() {
       <div class="booth-name">${name}</div>
       ${isStamped && stamps[num].time ? `<div class="visit-time">${stamps[num].time}</div>` : ''}
     `;
-    if (!isStamped) {
-      card.onclick = () => openSheet(num, name);
-    }
     grid.appendChild(card);
   });
   updateProgress();
@@ -488,13 +559,9 @@ function updateProgress() {
   document.getElementById('stamp-count').textContent = count;
   const pct = Math.min((count / 63) * 100, 100);
   document.getElementById('progress-bar').style.width = pct + '%';
-
-  // 5件達成バナー
   if (count >= 5) {
     document.getElementById('banner-step1').classList.add('show');
   }
-
-  // 全件達成
   if (count >= 63) {
     setTimeout(() => {
       document.getElementById('complete-screen').classList.add('active');
@@ -502,30 +569,14 @@ function updateProgress() {
   }
 }
 
-// シートを開く
-function openSheet(num, name) {
-  selectedBooth = { num, name };
-  document.getElementById('sheet-title').textContent = name;
-  document.getElementById('sheet-desc').textContent =
-    `ブース ${num}「${name}」のQRコードを読み取るとスタンプが押されます。`;
-  document.getElementById('overlay').classList.add('active');
-}
-
-function closeSheet() {
-  document.getElementById('overlay').classList.remove('active');
-  selectedBooth = null;
-}
-
-// スタンプを押す処理（実際はブースQRのURLから直接呼ばれます）
+// スタンプを押す
 function doStamp(boothNum, boothName) {
-  if (stamps[boothNum]) return; // 二重押し防止
-
+  if (stamps[boothNum]) return;
   const now = new Date();
   const timeStr = now.getHours() + ':' + String(now.getMinutes()).padStart(2,'0');
   stamps[boothNum] = { time: timeStr, boothName };
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(stamps));
+  localStorage.setItem(storageKey(), JSON.stringify(stamps));
 
-  // 送信データを作成してキューに追加
   const record = {
     school, grade,
     boothNum, boothName,
@@ -533,25 +584,13 @@ function doStamp(boothNum, boothName) {
   };
   queue.push(record);
   localStorage.setItem(QUEUE_KEY, JSON.stringify(queue));
-
-  // オンラインなら即時送信、オフラインならキューに残す
   sendQueue();
-
   buildGrid();
 }
 
-// テスト用（本番では削除）
-function simulateStamp() {
-  if (!selectedBooth) return;
-  closeSheet();
-  setTimeout(() => doStamp(selectedBooth.num, selectedBooth.name), 200);
-}
-
-// キューの内容をGASに送信する
+// キューをGASに送信
 async function sendQueue() {
-  if (queue.length === 0) return;
-  if (!navigator.onLine) return;
-
+  if (queue.length === 0 || !navigator.onLine) return;
   const toSend = [...queue];
   try {
     for (const record of toSend) {
@@ -559,39 +598,17 @@ async function sendQueue() {
       Object.entries(record).forEach(([k,v]) => url.searchParams.set(k, v));
       await fetch(url.toString(), { method: 'GET', mode: 'no-cors' });
     }
-    // 送信成功したらキューをクリア
     queue = [];
     localStorage.setItem(QUEUE_KEY, JSON.stringify(queue));
   } catch(e) {
-    // 失敗したらキューに残したまま次回再送
     console.log('送信待機中...');
   }
 }
 
-// オンラインに戻ったら自動送信
 window.addEventListener('online', sendQueue);
 
-// URLパラメータにブース番号がある場合（ブースQRから直接遷移してきた場合）
-const boothParam = params.get('booth');
-if (boothParam) {
-  const boothNum = parseInt(boothParam);
-  if (boothNum >= 1 && boothNum <= 63) {
-    const boothName = BOOTHS[boothNum - 1];
-    // 少し待ってからスタンプ（ページ読み込み完了後）
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        if (!stamps[boothNum]) {
-          doStamp(boothNum, boothName);
-        }
-      }, 400);
-    });
-  }
-}
-
-// ページロード
-buildGrid();
-// 起動時にも未送信データがあれば送信試行
-sendQueue();
+// ページ読み込み時：ブースQRから来た場合は入力画面を表示したまま待つ
+// （startStampRally()内でブース処理を行う）
 </script>
 </body>
 </html>
