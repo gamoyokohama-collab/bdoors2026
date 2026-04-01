@@ -4,92 +4,463 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>B.DOORS KANAGAWA 2026 スタンプラリー</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;700&family=M+PLUS+Rounded+1c:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --col-bg: #0a0a14;
-  --col-card: #12121f;
-  --col-border: #ffffff18;
-  --col-accent: #4f8aff;
-  --col-accent2: #a855f7;
-  --col-stamped: #22c55e;
-  --col-text: #f0f0f8;
-  --col-muted: #8888aa;
-  --col-gold: #fbbf24;
+  --pink:    #ff6b9d;
+  --pink2:   #ff8fb1;
+  --peach:   #ffb347;
+  --yellow:  #ffe066;
+  --mint:    #4ecdc4;
+  --sky:     #74b9ff;
+  --white:   #ffffff;
+  --bg:      #fff5f8;
+  --bg2:     #ffffff;
+  --text:    #3d2c35;
+  --muted:   #b08090;
+  --stamped: #00b894;
+  --gold:    #f9a825;
+  --border:  #f8d0de;
+  --shadow:  0 4px 16px rgba(255,107,157,0.13);
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: var(--col-bg); color: var(--col-text); font-family: 'Noto Sans JP', sans-serif; min-height: 100vh; padding-bottom: 40px; }
-.input-screen { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px 24px; background: linear-gradient(160deg, #0d1b3e 0%, #1a0a2e 50%, #0d2211 100%); }
-.input-logo { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 4px; color: #fff; text-align: center; margin-bottom: 4px; }
-.input-sub { font-size: 11px; letter-spacing: 3px; color: var(--col-accent); text-align: center; margin-bottom: 40px; }
-.input-card { background: #ffffff0d; border: 1px solid var(--col-border); border-radius: 16px; padding: 28px 24px; width: 100%; max-width: 360px; }
-.input-card h2 { font-size: 16px; font-weight: 700; margin-bottom: 24px; text-align: center; }
-.input-label { font-size: 12px; color: var(--col-muted); margin-bottom: 8px; display: block; }
-.input-select { width: 100%; padding: 14px 16px; border-radius: 10px; border: 1px solid var(--col-border); background: #ffffff0a; color: var(--col-text); font-family: 'Noto Sans JP', sans-serif; font-size: 15px; margin-bottom: 20px; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238888aa' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; }
-.input-select:focus { outline: none; border-color: var(--col-accent); }
-.input-select option { background: #1a1a2e; color: var(--col-text); }
-.start-btn { width: 100%; padding: 16px; border-radius: 12px; border: none; background: linear-gradient(135deg, var(--col-accent), var(--col-accent2)); color: #fff; font-family: 'Noto Sans JP', sans-serif; font-size: 16px; font-weight: 700; cursor: pointer; opacity: 0.4; transition: opacity 0.2s; }
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  min-height: 100vh;
+  padding-bottom: 40px;
+}
+
+/* ========== 入力画面 ========== */
+.input-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  background: linear-gradient(160deg, #ffe0ec 0%, #fff0f5 40%, #e8f4ff 100%);
+  position: relative;
+  overflow: hidden;
+}
+/* 背景の丸い飾り */
+.input-screen::before {
+  content: '';
+  position: absolute;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffb3cc44, transparent 70%);
+  top: -80px; right: -80px;
+}
+.input-screen::after {
+  content: '';
+  position: absolute;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #74b9ff33, transparent 70%);
+  bottom: -40px; left: -40px;
+}
+
+.input-logo {
+  font-family: 'Kaisei Decol', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--pink);
+  text-align: center;
+  margin-bottom: 2px;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
+}
+.input-sub {
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 36px;
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 1;
+}
+.input-emoji {
+  font-size: 56px;
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+  animation: bounce 2s ease-in-out infinite;
+}
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+.input-card {
+  background: var(--white);
+  border-radius: 24px;
+  padding: 28px 24px;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 8px 32px rgba(255,107,157,0.15);
+  position: relative;
+  z-index: 1;
+}
+.input-card h2 {
+  font-size: 17px;
+  font-weight: 800;
+  margin-bottom: 24px;
+  text-align: center;
+  color: var(--text);
+}
+.input-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--pink);
+  margin-bottom: 8px;
+  display: block;
+}
+.input-select {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 2px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23ff6b9d' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-color: var(--bg);
+}
+.input-select:focus { outline: none; border-color: var(--pink); }
+.input-select option { background: #fff; color: var(--text); }
+.start-btn {
+  width: 100%;
+  padding: 16px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, var(--pink), var(--peach));
+  color: #fff;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  opacity: 0.4;
+  transition: opacity 0.2s, transform 0.1s;
+  box-shadow: 0 4px 16px rgba(255,107,157,0.3);
+}
 .start-btn.ready { opacity: 1; }
+.start-btn.ready:active { transform: scale(0.97); }
+
+/* ========== スタンプカード画面 ========== */
 .stamp-screen { display: none; }
 .stamp-screen.active { display: block; }
-.header { background: linear-gradient(135deg, #0d1b3e 0%, #1a0a2e 50%, #0d2211 100%); padding: 20px 20px 16px; text-align: center; position: relative; overflow: hidden; border-bottom: 1px solid var(--col-border); }
-.header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, #4f8aff22 0%, transparent 70%); }
-.header-logo { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 4px; color: #fff; position: relative; }
-.header-info { margin-top: 12px; display: flex; align-items: center; justify-content: center; gap: 10px; position: relative; }
-.badge { border-radius: 20px; padding: 4px 14px; font-size: 12px; font-weight: 700; }
-.badge.school { color: var(--col-accent); border: 1px solid var(--col-accent)44; background: var(--col-accent)11; }
-.badge.grade  { color: var(--col-accent2); border: 1px solid var(--col-accent2)44; background: var(--col-accent2)11; }
-.progress-section { padding: 16px 20px 14px; background: var(--col-card); border-bottom: 1px solid var(--col-border); }
-.progress-row { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 8px; }
-.progress-count { font-family: 'Bebas Neue', sans-serif; font-size: 38px; line-height: 1; color: var(--col-accent); }
-.progress-count span { font-size: 18px; color: var(--col-muted); font-family: 'Noto Sans JP', sans-serif; font-weight: 400; }
-.progress-label { font-size: 11px; color: var(--col-muted); text-align: right; line-height: 1.6; }
-.progress-bar-wrap { background: #ffffff10; border-radius: 4px; height: 6px; overflow: hidden; }
-.progress-bar { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--col-accent), var(--col-accent2)); transition: width 0.6s cubic-bezier(.4,0,.2,1); }
-.mission-banner { margin: 12px 16px 0; border-radius: 10px; padding: 10px 14px; display: none; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; }
+
+.header {
+  background: linear-gradient(135deg, #ff6b9d, #ff8fb1, #ffb347);
+  padding: 20px 20px 18px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 20px;
+  background: var(--bg);
+  border-radius: 20px 20px 0 0;
+}
+.header-logo {
+  font-family: 'Kaisei Decol', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.header-info {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.badge {
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 13px;
+  font-weight: 800;
+  background: rgba(255,255,255,0.9);
+}
+.badge.school { color: var(--pink); }
+.badge.grade  { color: var(--peach); }
+
+/* 進捗エリア */
+.progress-section {
+  padding: 20px 20px 16px;
+  background: var(--white);
+  border-bottom: 2px solid var(--border);
+}
+.progress-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.progress-count {
+  font-family: 'Kaisei Decol', serif;
+  font-size: 44px;
+  line-height: 1;
+  color: var(--pink);
+  font-weight: 700;
+}
+.progress-count span {
+  font-size: 20px;
+  color: var(--muted);
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: 700;
+}
+.progress-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  text-align: right;
+  line-height: 1.7;
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 8px 12px;
+}
+.progress-bar-wrap {
+  background: var(--border);
+  border-radius: 8px;
+  height: 10px;
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--pink), var(--peach));
+  transition: width 0.6s cubic-bezier(.4,0,.2,1);
+}
+
+/* ミッションバナー */
+.mission-banner {
+  margin: 12px 16px 0;
+  border-radius: 14px;
+  padding: 12px 16px;
+  display: none;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 800;
+}
 .mission-banner.show { display: flex; }
-.mission-banner.step1 { background: linear-gradient(135deg, #fbbf2420, #f59e0b10); border: 1px solid var(--col-gold)44; color: var(--col-gold); }
-.mission-icon { width: 28px; height: 28px; border-radius: 50%; background: var(--col-gold)22; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
-.howto { margin: 12px 16px 0; background: #ffffff08; border: 1px solid var(--col-border); border-radius: 10px; padding: 10px 14px; font-size: 11px; color: var(--col-muted); line-height: 1.7; }
-.howto strong { color: var(--col-accent); }
-.section-title { padding: 16px 16px 8px; font-size: 11px; letter-spacing: 2px; color: var(--col-muted); }
-.booth-list { padding: 0 12px; display: flex; flex-direction: column; gap: 6px; }
-.booth-item { display: flex; align-items: center; gap: 12px; background: var(--col-card); border: 1px solid var(--col-border); border-radius: 12px; padding: 14px 16px; cursor: pointer; transition: transform 0.1s, border-color 0.2s, background 0.2s; -webkit-tap-highlight-color: transparent; user-select: none; }
-.booth-item:active { transform: scale(0.98); }
-.booth-item.stamped { border-color: var(--col-stamped)55; background: linear-gradient(135deg, #052210, #0a1a0a); cursor: default; pointer-events: none; }
-.booth-check { width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--col-border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 14px; }
-.booth-item.stamped .booth-check { background: var(--col-stamped); border-color: var(--col-stamped); color: #fff; }
+.mission-banner.step1 {
+  background: linear-gradient(135deg, #fff9e0, #fff3cc);
+  border: 2px solid var(--yellow);
+  color: #b07800;
+}
+.mission-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+/* 使い方 */
+.howto {
+  margin: 12px 16px 0;
+  background: linear-gradient(135deg, #f0f9ff, #e8f4ff);
+  border: 2px solid #c8e6ff;
+  border-radius: 14px;
+  padding: 12px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #5080a0;
+  line-height: 1.7;
+}
+
+.section-title {
+  padding: 18px 16px 10px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+/* ブースリスト */
+.booth-list { padding: 0 12px; display: flex; flex-direction: column; gap: 8px; }
+
+.booth-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: transform 0.12s, border-color 0.2s, box-shadow 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  box-shadow: 0 2px 8px rgba(255,107,157,0.06);
+}
+.booth-item:active { transform: scale(0.97); }
+.booth-item.stamped {
+  border-color: var(--stamped);
+  background: linear-gradient(135deg, #f0fff8, #e8fff4);
+  cursor: default;
+  pointer-events: none;
+}
+
+.booth-check {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 16px;
+  font-weight: 800;
+  transition: all 0.3s cubic-bezier(.34,1.56,.64,1);
+  color: #fff;
+}
+.booth-item.stamped .booth-check {
+  background: var(--stamped);
+  border-color: var(--stamped);
+}
+
 .booth-info { flex: 1; min-width: 0; }
-.booth-item-num { font-size: 10px; color: var(--col-muted); margin-bottom: 2px; }
-.booth-item-name { font-size: 14px; font-weight: 700; color: var(--col-text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.booth-item.stamped .booth-item-name { color: var(--col-stamped); }
-.booth-time { font-size: 10px; color: var(--col-stamped)99; flex-shrink: 0; }
-.modal-overlay { display: none; position: fixed; inset: 0; background: #000000bb; z-index: 100; align-items: flex-end; justify-content: center; }
+.booth-item-num {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  margin-bottom: 3px;
+}
+.booth-item-name {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.booth-item.stamped .booth-item-name { color: var(--stamped); }
+
+.booth-time {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--stamped);
+  flex-shrink: 0;
+  background: #e8fff4;
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+
+/* モーダル */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(60,20,40,0.4);
+  z-index: 100;
+  align-items: flex-end;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
 .modal-overlay.active { display: flex; }
-.modal-sheet { background: #1a1a2e; border-radius: 20px 20px 0 0; width: 100%; max-width: 480px; padding: 28px 24px 48px; border-top: 1px solid var(--col-border); animation: slideUp 0.25s cubic-bezier(.4,0,.2,1); }
+.modal-sheet {
+  background: var(--white);
+  border-radius: 28px 28px 0 0;
+  width: 100%;
+  max-width: 480px;
+  padding: 28px 24px 52px;
+  animation: slideUp 0.25s cubic-bezier(.4,0,.2,1);
+}
 @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-.modal-booth-name { font-size: 20px; font-weight: 900; margin-bottom: 8px; line-height: 1.3; }
-.modal-desc { font-size: 13px; color: var(--col-muted); margin-bottom: 24px; line-height: 1.7; }
-.modal-btn-yes { width: 100%; padding: 16px; border-radius: 12px; border: none; background: linear-gradient(135deg, var(--col-stamped), #16a34a); color: #fff; font-family: 'Noto Sans JP', sans-serif; font-size: 16px; font-weight: 700; cursor: pointer; margin-bottom: 10px; }
-.modal-btn-no { width: 100%; padding: 14px; border-radius: 12px; border: none; background: #ffffff10; color: var(--col-muted); font-family: 'Noto Sans JP', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; }
-.toast { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8); background: var(--col-stamped); color: #fff; padding: 20px 32px; border-radius: 16px; font-size: 16px; font-weight: 700; text-align: center; opacity: 0; transition: all 0.3s cubic-bezier(.34,1.56,.64,1); z-index: 300; pointer-events: none; min-width: 200px; white-space: pre-line; line-height: 1.6; }
+.modal-emoji { font-size: 36px; text-align: center; margin-bottom: 10px; }
+.modal-booth-name {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 6px;
+  line-height: 1.3;
+  text-align: center;
+  color: var(--text);
+}
+.modal-desc {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  margin-bottom: 24px;
+  line-height: 1.7;
+  text-align: center;
+}
+.modal-btn-yes {
+  width: 100%; padding: 16px; border-radius: 14px; border: none;
+  background: linear-gradient(135deg, var(--stamped), #00cba3);
+  color: #fff; font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 17px; font-weight: 800; cursor: pointer; margin-bottom: 10px;
+  box-shadow: 0 4px 16px rgba(0,184,148,0.3);
+}
+.modal-btn-no {
+  width: 100%; padding: 14px; border-radius: 14px; border: 2px solid var(--border);
+  background: var(--bg); color: var(--muted);
+  font-family: 'M PLUS Rounded 1c', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer;
+}
+
+/* トースト */
+.toast {
+  position: fixed; top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: linear-gradient(135deg, var(--stamped), #00cba3);
+  color: #fff; padding: 20px 32px; border-radius: 20px;
+  font-size: 16px; font-weight: 800; text-align: center;
+  opacity: 0; transition: all 0.3s cubic-bezier(.34,1.56,.64,1);
+  z-index: 300; pointer-events: none; min-width: 200px;
+  white-space: pre-line; line-height: 1.6;
+  box-shadow: 0 8px 32px rgba(0,184,148,0.3);
+}
 .toast.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-.complete-screen { display: none; position: fixed; inset: 0; background: #0a0a14; z-index: 200; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px; }
+
+/* 完了画面 */
+.complete-screen {
+  display: none; position: fixed; inset: 0;
+  background: linear-gradient(160deg, #ffe0ec, #fff0f5, #e8f4ff);
+  z-index: 200; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center; padding: 40px;
+}
 .complete-screen.active { display: flex; }
-.complete-emoji { font-size: 64px; margin-bottom: 20px; }
-.complete-title { font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 4px; color: var(--col-gold); margin-bottom: 12px; }
-.complete-msg { font-size: 14px; color: var(--col-muted); line-height: 1.8; margin-bottom: 32px; }
-.complete-btn { padding: 14px 40px; border-radius: 100px; border: 1px solid var(--col-gold)66; background: var(--col-gold)11; color: var(--col-gold); font-family: 'Noto Sans JP', sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; }
+.complete-emoji { font-size: 80px; margin-bottom: 16px; animation: bounce 1.5s ease-in-out infinite; }
+.complete-title {
+  font-family: 'Kaisei Decol', serif;
+  font-size: 36px; font-weight: 700; color: var(--pink); margin-bottom: 12px;
+}
+.complete-msg { font-size: 15px; font-weight: 700; color: var(--muted); line-height: 1.8; margin-bottom: 32px; }
+.complete-btn {
+  padding: 16px 40px; border-radius: 100px;
+  border: none; background: linear-gradient(135deg, var(--pink), var(--peach));
+  color: #fff; font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 15px; font-weight: 800; cursor: pointer;
+  box-shadow: 0 4px 16px rgba(255,107,157,0.3);
+}
 </style>
 </head>
 <body>
 
+<!-- 入力画面 -->
 <div class="input-screen" id="input-screen">
+  <div class="input-emoji">💄</div>
   <div class="input-logo">B.DOORS KANAGAWA 2026</div>
-  <div class="input-sub">Stamp Rally</div>
+  <div class="input-sub">STAMP RALLY</div>
   <div class="input-card">
-    <h2>はじめに教えてください</h2>
-    <label class="input-label">学校名</label>
+    <h2>👋 はじめに教えてください</h2>
+    <label class="input-label">🏫 学校名</label>
     <select class="input-select" id="select-school" onchange="checkReady()">
       <option value="">選択してください</option>
       <option value="横浜fカレッジ">横浜fカレッジ</option>
@@ -101,7 +472,7 @@ body { background: var(--col-bg); color: var(--col-text); font-family: 'Noto San
       <option value="横浜芸術専修学校">横浜芸術専修学校</option>
       <option value="MDFビューティカレッジ">MDFビューティカレッジ</option>
     </select>
-    <label class="input-label">学年</label>
+    <label class="input-label">📚 学年</label>
     <select class="input-select" id="select-grade" onchange="checkReady()">
       <option value="">選択してください</option>
       <option value="1年生">1年生</option>
@@ -109,54 +480,66 @@ body { background: var(--col-bg); color: var(--col-text); font-family: 'Noto San
       <option value="3年生">3年生</option>
     </select>
     <button class="start-btn" id="start-btn" onclick="startStampRally()">
-      スタンプラリーをはじめる
+      ✨ スタンプラリーをはじめる
     </button>
   </div>
 </div>
 
+<!-- スタンプカード画面 -->
 <div class="stamp-screen" id="stamp-screen">
   <div class="header">
-    <div class="header-logo">B.DOORS KANAGAWA 2026</div>
+    <div class="header-logo">💄 B.DOORS KANAGAWA 2026</div>
     <div class="header-info">
       <span class="badge school" id="badge-school"></span>
       <span class="badge grade" id="badge-grade"></span>
     </div>
   </div>
+
   <div class="progress-section">
     <div class="progress-row">
-      <div class="progress-count"><span id="stamp-count">0</span><span> / 62</span></div>
-      <div class="progress-label">5件達成で<br>抽選に参加できます</div>
+      <div>
+        <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:4px;">訪問したブース</div>
+        <div class="progress-count"><span id="stamp-count">0</span><span> / 62</span></div>
+      </div>
+      <div class="progress-label">5件まわると<br>🎰 抽選に参加できます！</div>
     </div>
     <div class="progress-bar-wrap">
       <div class="progress-bar" id="progress-bar" style="width:0%"></div>
     </div>
   </div>
+
   <div class="mission-banner step1" id="banner-step1">
     <div class="mission-icon">🎉</div>
-    <div>5件達成！抽選会場へ行けるようになりました</div>
+    <div>5件達成！抽選会場へ行けます！</div>
   </div>
+
   <div class="howto">
-    <strong>使い方：</strong>訪問したブース名をタップ → スタッフに画面を見せる → チェックが入ります
+    💡 <strong>使い方：</strong>訪問したブース名をタップ → スタッフに画面を見せる → チェック完了！
   </div>
-  <div class="section-title">BOOTH LIST</div>
+
+  <div class="section-title">🏢 ブース一覧</div>
   <div class="booth-list" id="booth-list"></div>
 </div>
 
+<!-- 確認モーダル -->
 <div class="modal-overlay" id="modal-overlay">
   <div class="modal-sheet">
+    <div class="modal-emoji">✋</div>
     <div class="modal-booth-name" id="modal-booth-name"></div>
-    <div class="modal-desc">このブースを訪問しましたか？<br>タップすると取り消しができません。</div>
-    <button class="modal-btn-yes" id="modal-btn-yes">✓ 訪問しました</button>
+    <div class="modal-desc">このブースを訪問しましたか？<br>一度チェックすると取り消しできません。</div>
+    <button class="modal-btn-yes" id="modal-btn-yes">✓ 訪問しました！</button>
     <button class="modal-btn-no" onclick="closeModal()">キャンセル</button>
   </div>
 </div>
 
+<!-- トースト -->
 <div class="toast" id="toast"></div>
 
+<!-- 完了画面 -->
 <div class="complete-screen" id="complete-screen">
   <div class="complete-emoji">🏆</div>
   <div class="complete-title">全ブース制覇！</div>
-  <div class="complete-msg">62ブースすべてを訪問しました。<br>ありがとうございました！</div>
+  <div class="complete-msg">62ブースすべてを訪問しました！<br>おつかれさまでした✨</div>
   <button class="complete-btn" onclick="document.getElementById('complete-screen').classList.remove('active')">カードを確認する</button>
 </div>
 
@@ -185,8 +568,8 @@ const QUEUE_KEY = 'bdoors2026_queue';
 let queue = JSON.parse(localStorage.getItem(QUEUE_KEY) || '[]');
 
 function checkReady() {
-  const s = document.getElementById('select-school').value;
-  const g = document.getElementById('select-grade').value;
+  var s = document.getElementById('select-school').value;
+  var g = document.getElementById('select-grade').value;
   document.getElementById('start-btn').classList.toggle('ready', s !== '' && g !== '');
 }
 
@@ -206,7 +589,7 @@ function startStampRally() {
 function storageKey() { return 'bdoors2026_' + school + '_' + grade; }
 
 function buildList() {
-  const list = document.getElementById('booth-list');
+  var list = document.getElementById('booth-list');
   list.innerHTML = '';
   BOOTHS.forEach(function(name, i) {
     var num = i + 1;
@@ -221,7 +604,6 @@ function buildList() {
       '</div>' +
       (isStamped && stamps[num].time ? '<div class="booth-time">' + stamps[num].time + '</div>' : '');
     if (!isStamped) {
-      // ★修正：クロージャーの問題を回避するためにデータ属性で番号と名前を持たせる
       item.dataset.num  = num;
       item.dataset.name = name;
       item.addEventListener('click', function() {
@@ -244,8 +626,6 @@ function updateProgress() {
 function openModal(num, name) {
   document.getElementById('modal-booth-name').textContent = name;
   document.getElementById('modal-overlay').classList.add('active');
-
-  // ★修正：ボタンにその場で直接処理を割り当てる（pendingBoothを使わない）
   var btn = document.getElementById('modal-btn-yes');
   btn.onclick = function() {
     document.getElementById('modal-overlay').classList.remove('active');
@@ -267,7 +647,7 @@ function doStamp(boothNum, boothName) {
   localStorage.setItem(QUEUE_KEY, JSON.stringify(queue));
   sendQueue();
   buildList();
-  showToast('✓  ' + boothName + '\nスタンプを押しました！');
+  showToast('✓  ' + boothName + '\nチェックしました！');
 }
 
 function showToast(msg) {
@@ -299,3 +679,4 @@ window.addEventListener('online', sendQueue);
 </script>
 </body>
 </html>
+
